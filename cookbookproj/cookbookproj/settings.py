@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+from .utils import get_git_sha
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -117,4 +120,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
+# Neat cachebusting trick. Could be used on older Django versions where
+# ManifestStaticFilesStorage is either buggy or not present at all.
+STATIC_URL = '/static/{}/'.format(get_git_sha(BASE_DIR))
