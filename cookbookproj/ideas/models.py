@@ -16,10 +16,6 @@ class Category(models.Model):
 class Idea(CreationModificationDateMixin, models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
-    category = models.ForeignKey(Category,
-                                 on_delete=models.CASCADE,
-                                 null=True,
-                                 blank=True)
     categories = models.ManyToManyField(Category,
                                         related_name='ideas',
                                         blank=True)
