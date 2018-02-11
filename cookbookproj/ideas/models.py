@@ -1,6 +1,6 @@
 from django.db import models
 
-from .mixins import CreationModificationDateMixin
+from cookbookproj.mixins import CreationModificationDateMixin
 
 
 class Category(models.Model):
