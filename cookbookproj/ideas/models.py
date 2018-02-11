@@ -20,6 +20,9 @@ class Idea(CreationModificationDateMixin, models.Model):
                                  on_delete=models.CASCADE,
                                  null=True,
                                  blank=True)
+    categories = models.ManyToManyField(Category,
+                                        related_name='ideas',
+                                        blank=True)
 
     def __str__(self):
         return self.title
